@@ -20,7 +20,6 @@ jobs:
       - name: Get working directory
         run: |
           echo ${{ github.workspace }}
-          echo $GITHUB_WORKSPACE
 
       # base href url value should be changed so that resources like CSS and scripts can load properly. 
       #- name: Rewrite base href
@@ -32,7 +31,7 @@ jobs:
 
       # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
       - name: Add .nojekyll file
-        run: touch ${{ env.PUBLISH_DIR }}/.nojekyll
+        run: touch ${{ github.workspace }}/${{ env.PUBLISH_DIR }}/.nojekyll
       
       - name: Commit to GitHub pages Repo
         if: success()
