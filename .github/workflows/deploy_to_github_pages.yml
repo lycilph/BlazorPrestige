@@ -1,0 +1,17 @@
+name: Deploy Blazor WASM to GitHub Page
+env:
+  PUBLISH_DIR: bin/Release/net8.0/browser-wasm/publish/wwwroot
+
+# Controls when the action will run
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@4.1.4
+
+      - name: Publish application
+        run: dotnet publish -c Release
